@@ -11,8 +11,8 @@ public class C03_BeforeAfter {
     after methodu icin teardown'u seceriz.
     before methodu icin setup'i seceriz.
     test methodu icin de test'i seceriz
-     Junit frameworkunde testlerimizi siralama yapabilmek icin ekstra bir notasyon yoktur.
-     Eger belli bir siralamada calistirmak istersek method isimlerini alfabetik ve sayisal olarak belirtmemiz gerekir
+    Junit frameworkunde testlerimizi siralama yapabilmek icin ekstra bir notasyon yoktur.
+    Eger belli bir siralamada calistirmak istersek method isimlerini alfabetik ve sayisal olarak belirtmemiz gerekir
     */
 
 
@@ -31,9 +31,7 @@ public class C03_BeforeAfter {
     @Test
     public void test01() {
         System.out.println("Ilk test");
-
     }
-
 
     @Test
     public void test02() {
