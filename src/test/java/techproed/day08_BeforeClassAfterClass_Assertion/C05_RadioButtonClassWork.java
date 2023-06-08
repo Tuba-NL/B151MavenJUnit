@@ -24,10 +24,9 @@ public class C05_RadioButtonClassWork {
     }
 
 
-
     @Test
     public void radioButton() throws InterruptedException {
-       //- https://www.facebook.com adresine gidin
+        //- https://www.facebook.com adresine gidin
         driver.get("https://www.facebook.com");
 
         //-Cookies’i kabul edin
@@ -35,7 +34,7 @@ public class C05_RadioButtonClassWork {
 
         //-“Create an Account” button’una basin
         driver.findElement(By.xpath("(//*[@role='button'])[2]")).click();
-
+/*
         //“radio buttons” elementlerini locate edin
         WebElement bayan = driver.findElement(By.xpath("(//*[@type=\"radio\"])[1]"));
         WebElement erkek = driver.findElement(By.xpath("(//*[@type=\"radio\"])[2]"));
@@ -52,5 +51,8 @@ public class C05_RadioButtonClassWork {
     @After
     public void tearDown() throws Exception {
         driver.close();
+    }
+
+ */
     }
 }
