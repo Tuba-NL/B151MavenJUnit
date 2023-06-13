@@ -9,10 +9,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import techproed.utilities.TestBase;
 
 import java.time.Duration;
 
-public class C01_DropDown {
+public class C01_DropDown extends TestBase {
 
     /*
     DropDown: Alt basliklarin oldugu acilir mwnu listesidir.
@@ -53,9 +54,10 @@ WebDriver driver;
         // Yıl Dropdown'undan "2020" seciniz
         WebElement ddmYil = driver.findElement(By.xpath("//*[@id='year']"));
         Select select = new Select(ddmYil);
-        select.selectByVisibleText("2020");
+        //select.selectByVisibleText("2020");
         //select.deselectByIndex(3);
         //select.selectByValue("2020");
+        ddmVisibletext(ddmYil,"2020");
 
 
         // Ay Dropdown'undan "August" seciniz

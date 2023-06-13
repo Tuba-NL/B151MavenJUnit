@@ -17,7 +17,8 @@ import java.util.List;
 public class C03_DropDown {
 
 
-    WebDriver driver;
+
+  static WebDriver driver;
 
     @Before
     public void setUp() throws Exception {
@@ -27,7 +28,6 @@ public class C03_DropDown {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
     }
-
     @After
     public void tearDown() throws Exception {
          driver.close();
