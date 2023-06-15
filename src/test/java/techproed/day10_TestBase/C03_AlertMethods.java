@@ -30,7 +30,7 @@ public class C03_AlertMethods extends TestBase {
      */
 
     @Test
-    public void acceptAlert() throws InterruptedException {
+    public void acceptAlert() {
 
         driver.get("https://testcenter.techproeducation.com/index.php?page=javascript-alerts");
 
@@ -43,7 +43,7 @@ public class C03_AlertMethods extends TestBase {
 
         //    uyarıdaki OK butonuna tıklayın
 
-        alertAccept();//Resable Method
+       acceptAlert();//Resable Method
 
        bekle(2);
 
@@ -59,7 +59,7 @@ public class C03_AlertMethods extends TestBase {
 
 
     @Test
-    public void dismissAlert() throws InterruptedException {
+    public void dismissAlert()  {
 
         driver.get("https://testcenter.techproeducation.com/index.php?page=javascript-alerts");
         bekle(2);
@@ -71,7 +71,7 @@ public class C03_AlertMethods extends TestBase {
 
 
         //    uyarıdaki Cancel butonuna tıklayın
-        alertDismiss();
+        dismissAlert();
         bekle(2);
 
 
@@ -107,7 +107,7 @@ public class C03_AlertMethods extends TestBase {
         bekle(2);
 
         //OK butonuna tıklayın
-        alertAccept();
+        acceptAlert();
 
         bekle(2);
 

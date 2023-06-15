@@ -5,7 +5,11 @@ import org.junit.Test;
 
 public class C06_Assertion {
     /*
-   Assertion'larda esitlik icin expected , actual olarak kullanilir
+   -Assertion'larda esitlik icin expected , actual olarak kullanilir
+
+  -Assert.assertTrue ==> isSelected, isEnable, isDisplay ve contains tarzinda boolean donduren ifadelerde kullanilir
+
+  -Assert.assertEquals ==> ... oldugu gibi esitlik isteyen ifadelerde kullanili
     */
     @Test
     public void test01() {

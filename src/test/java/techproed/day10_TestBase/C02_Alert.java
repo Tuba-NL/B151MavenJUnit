@@ -36,7 +36,7 @@ public class C02_Alert extends TestBase {
      */
 
     @Test
-    public void acceptAlert() throws InterruptedException {
+    public void acceptAlert()  {
 
         driver.get("https://testcenter.techproeducation.com/index.php?page=javascript-alerts");
 
@@ -44,7 +44,7 @@ public class C02_Alert extends TestBase {
         //    1. butona tıklayın,
         driver.findElement(By.xpath("//button[text()='Click for JS Alert']")).click();
 
-        Thread.sleep(2000);
+      bekle(2);
 
 
         //    uyarıdaki OK butonuna tıklayın
@@ -53,7 +53,7 @@ public class C02_Alert extends TestBase {
                 accept();  // cıkan uyarıda OK yada TAMAM butonuna basar
 
 
-        Thread.sleep(2000);
+      bekle(2);
 
 
         //    ve result mesajının "You successfully clicked an alert" oldugunu test edin.
@@ -67,20 +67,20 @@ public class C02_Alert extends TestBase {
 
 
     @Test
-    public void dismissAlert() throws InterruptedException {
+    public void dismissAlert()  {
 
         driver.get("https://testcenter.techproeducation.com/index.php?page=javascript-alerts");
-        Thread.sleep(2000);
+        bekle(2);
 
         //   Bir metod olusturun: dismissAlert
         //    2. butona tıklayın,
         driver.findElement(By.xpath("//button[text()='Click for JS Confirm']")).click();
-        Thread.sleep(2000);
+      bekle(2);
 
 
         //    uyarıdaki Cancel butonuna tıklayın
         driver.switchTo().alert().dismiss();
-        Thread.sleep(2000);
+      bekle(2);
 
 
         //    ve result mesajının "successfuly" icermedigini test edin.
@@ -95,13 +95,13 @@ public class C02_Alert extends TestBase {
     public void sendKeysAlert() throws InterruptedException {
 
         driver.get("https://testcenter.techproeducation.com/index.php?page=javascript-alerts");
-        Thread.sleep(2000);
+       bekle(2);
 
 
         //  Bir metod olusturun: sendKeysAlert
         //  3. butona tıklayın,
         driver.findElement(By.xpath("//button[.='Click for JS Prompt']")).click();
-        Thread.sleep(2000);
+       bekle(2);
 
         //  uyarıdaki mesajı konsolda yazdırın,
         System.out.println(driver.switchTo().alert().getText());
@@ -109,11 +109,11 @@ public class C02_Alert extends TestBase {
 
         //uyarıdaki metin kutusuna isminizi yazin,
         driver.switchTo().alert().sendKeys("Tuba");
-        Thread.sleep(2000);
+      bekle(2);
 
         //OK butonuna tıklayın
         driver.switchTo().alert().accept();
-        Thread.sleep(2000);
+       bekle(2);
 
         //ve result mesajında isminizin görüntülendiğini doğrulayın.
         String actuelResult = driver.findElement(By.xpath("//*[@id='result']")).getText();

@@ -57,7 +57,7 @@ WebDriver driver;
         //select.selectByVisibleText("2020");
         //select.deselectByIndex(3);
         //select.selectByValue("2020");
-        ddmVisibletext(ddmYil,"2020");
+        selectVisibleText(ddmYil,"2020");
 
 
         // Ay Dropdown'undan "August" seciniz

@@ -24,7 +24,7 @@ public class C03_Nt_Alert extends TestBase {
         bekle(2);
 
         //Ve alert'ü kapatalım
-        alertAccept();//-->TestBase class'ında oluşturmuş olduğumuz method
+        acceptAlert();//-->TestBase class'ında oluşturmuş olduğumuz method
     }
 
     @Test
@@ -35,7 +35,7 @@ public class C03_Nt_Alert extends TestBase {
         driver.findElement(By.xpath("(//button)[4]")).click();
         bekle(2);
         //Çıkan alertte iptal'e basalım
-        alertDismiss();
+        dismissAlert();
 
         //sonuc yazısında You selected Cancel yazdığını doğrulayalım
         String sonucYazisi = driver.findElement(By.id("confirmResult")).getText();
@@ -54,7 +54,7 @@ public class C03_Nt_Alert extends TestBase {
         //çıkan alerte ismimizi girelim
         sendKeysAlert("Erol");
         bekle(2);
-        alertAccept();
+        acceptAlert();
         //ismi girdiğimizi doğrulayalım
         String sonucYazisi = driver.findElement(By.id("promptResult")).getText();
         Assert.assertTrue(sonucYazisi.contains("Tuba"));

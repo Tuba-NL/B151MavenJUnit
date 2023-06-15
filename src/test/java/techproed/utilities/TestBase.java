@@ -9,12 +9,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class TestBase {
-
-    //Bu class`a extends ettigimiz test classlarindan ulasabiliriz.
-    //TestBase Class`indan obje olusturulmasinin onune gecilmesi icin ABSTRACT yapilabilir.
-
+    /*
+        TestBase class'ından obje oluşturmanın önüne geçmek için bu class'ı abstract yapabiliriz.
+    TestBase testBase = new TestBase(); yani bu şekilde obje oluşturmanın önüne geçmiş oluruz.
+    Bu class'a extends yaptığımız test class'larından ulaşabiliriz
+     */
     protected WebDriver driver;
     @Before
     public void setUp() throws Exception {
@@ -26,9 +29,10 @@ public abstract class TestBase {
 
     @After
     public void tearDown() throws Exception {
-        driver.quit();
+      //  driver.quit();
     }
 
+    //HARD WAIT (Bekleme Methodu)
     public void bekle(int saniye){
         try {
             Thread.sleep(saniye*1000);
@@ -37,35 +41,51 @@ public abstract class TestBase {
         }
     }
 
-    public void alertAccept(){
+    //AcceptAlert
+    public void acceptAlert(){
         driver.switchTo().alert().accept();
     }
 
-    public void alertDismiss(){
+    //DismissAlert
+    public void dismissAlert(){
         driver.switchTo().alert().dismiss();
     }
-
-    public void sendKeysAlert(String text){
-        driver.switchTo().alert().sendKeys(text);
-    }
-
+    //getTextAlert
     public String getTextAlert(){
         return driver.switchTo().alert().getText();
     }
 
-    public void ddmVisibletext(WebElement ddm, String secenek){
-        Select select = new Select(ddm);
-        select.selectByVisibleText(secenek);
+    //sendKeysAlert
+    public void sendKeysAlert(String text){
+        driver.switchTo().alert().sendKeys(text);
     }
 
-    public void ddmIndex(WebElement ddm, int index){
+    //DropDown VisibleText
+    public void selectVisibleText(WebElement ddm, String text){
+        Select select = new Select(ddm);
+        select.selectByVisibleText(text);
+    }
+
+    //DropDown Index
+    public void selectIndex(WebElement ddm,int index){
         Select select = new Select(ddm);
         select.selectByIndex(index);
     }
 
-    public void ddmValue(WebElement ddm, String value){
+    //DropDown Value
+    public void selectValue(WebElement ddm,String value){
         Select select = new Select(ddm);
         select.selectByValue(value);
+    }
+
+    //SwitchTo Window-1
+    public void switchToWindow(int index){
+        List<String> pencereler = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(pencereler.get(index));
+    }
+    //SwitchTo Window-2
+    public void switchToWindow2(int index){
+        driver.switchTo().window(driver.getWindowHandles().toArray()[index].toString());
     }
 
 
