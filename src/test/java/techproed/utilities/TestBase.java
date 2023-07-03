@@ -1,5 +1,8 @@
 package techproed.utilities;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
@@ -11,6 +14,9 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -20,12 +26,20 @@ import java.util.Date;
 import java.util.List;
 
 public abstract class TestBase {
+
+   protected ExtentReports extentReports; //-->Raporlamayı başlatmak için kullanılan class
+   protected ExtentHtmlReporter extentHtmlReporter;//-->Raporu HTML formatında düzenler
+   protected ExtentTest extentTest;//--> Test adınlarına eklemek istediğimiz bilgileri bu class ile oluştururuz
+
     /*
         TestBase class'ından obje oluşturmanın önüne geçmek için bu class'ı abstract yapabiliriz.
     TestBase testBase = new TestBase(); yani bu şekilde obje oluşturmanın önüne geçmiş oluruz.
     Bu class'a extends yaptığımız test class'larından ulaşabiliriz
      */
     protected WebDriver driver;
+
+
+
     @Before
     public void setUp() throws Exception {
         WebDriverManager.chromedriver().setup();
@@ -36,6 +50,8 @@ public abstract class TestBase {
 
     @After
     public void tearDown() throws Exception {
+        extentReports = new ExtentReports();
+        extentReports.flush();
       //  driver.quit();
     }
 
@@ -146,6 +162,46 @@ public abstract class TestBase {
                 throw new RuntimeException(e);
             }
         }
+    //UploadFile Robot Class
+    public void uploadFilePath(String filePath) {
+        try {
+            bekle(3);
+            StringSelection stringSelection = new StringSelection(filePath);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+            Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            bekle(3);
+            robot.keyPress(KeyEvent.VK_V);
+            bekle(3);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            bekle(3);
+            robot.keyRelease(KeyEvent.VK_V);
+            bekle(3);
+            robot.keyPress(KeyEvent.VK_ENTER);
+            bekle(3);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+            bekle(3);
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //Extent Report Methodu
+    public void extentReport(String browser, String reportName) {
+        extentReports = new ExtentReports();
+        String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String dosyaYolu = "testOutput/extentReports/extentReport" + tarih + ".html";
+
+        extentHtmlReporter = new ExtentHtmlReporter(dosyaYolu);
+        extentReports.attachReporter(extentHtmlReporter);//-->HTML formatinda raporlamayi baslatacak
+
+
+        //Raporda gozukmesini istedigimiz bilgiler icin
+        extentReports.setSystemInfo("Browser", browser);
+        extentReports.setSystemInfo("Tester", "Tuba");
+        extentHtmlReporter.config().setDocumentTitle("Extent Report");
+        extentHtmlReporter.config().setReportName(reportName);
+
+    }
     }
 
 
