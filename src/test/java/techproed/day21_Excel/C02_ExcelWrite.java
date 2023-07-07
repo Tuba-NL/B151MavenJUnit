@@ -27,6 +27,13 @@ public class C02_ExcelWrite  {
         Workbook workbook = WorkbookFactory.create(fis);
         //dosyayi workbook`a atadik.
 
+         /*
+        -->Bir hucreye veri ekleyebilmek icin belirtmis oldugumuz satirdan sonra hangi
+         hucreye(cell) ekleme yapacaksak createCell(cell numarasi) methodu ile cell icine eklenecek
+        veri icin setCellValue() methodu kullanarak istedigimiz veriyi ekleyebiliriz.
+
+         */
+
         workbook.getSheet("sheet1").getRow(0).createCell(2).setCellValue("NUFUS");
         workbook.getSheet("Sheet1").getRow(1).createCell(2).setCellValue("1100");
         workbook.getSheet("Sheet1").getRow(2).createCell(2).setCellValue("1500");//tirnak kullanmadan da yazilabilir.
@@ -44,6 +51,15 @@ public class C02_ExcelWrite  {
         workbook.write(fos);
         //workbook`daki datalari fos`a yazdik.
 
+             /*
+    Excel'e veri ekleme işleminden sonra FileOutputStream ile eklediğimiz verileri workbook objesi ile
+    write() methodu kullanarak kaydederiz.
+    Bu şekilde excel'e veriler kaydedilmiş olur. Sonra yapacağımız farklı işlemlerde hata almamamız için
+    fos(FileOutStream).close() ve workbook.close() methodlarıyla yaptığımız işlemleri kaydedip sonlandırmış oluruz.
+     */
+        /*
+        fis ile verileri ekledikten sonra fos ile dosyaya kaydederiz
+         */
 
     }
 }
