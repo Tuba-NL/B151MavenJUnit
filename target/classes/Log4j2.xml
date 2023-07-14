@@ -4,7 +4,7 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
         </Console>
-        <File name="File" fileName="selenium-${date:dd-MM-yyyy_HHmmss}.log" append="true"><!--Logları test çalışırken ekler -->
+        <File name="File">// fileName="selenium-${date:dd-MM-yyyy_HHmmss}.log" append="true"><!--Logları test çalışırken ekler -->
             <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss} %-5level %c %m%n" />
         </File>
     </Appenders>
